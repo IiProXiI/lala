@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>قاعدة بيانات وهمية</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #cfe2f3, #3d85c6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #333;
+            text-align: center;
+        }
+        .container {
+            max-width: 600px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            overflow-y: auto;
+            max-height: 80vh;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #3d85c6;
+            color: #fff;
+        }
+        button {
+            padding: 10px;
+            margin-top: 20px;
+            background-color: #ff7e5f;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #feb47b;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>قاعدة بيانات وهمية</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>الاسم</th>
+                    <th>البريد الإلكتروني</th>
+                    <th>المبلغ</th>
+                </tr>
+            </thead>
+            <tbody id="data-table">
+                <!-- البيانات سيتم إضافتها هنا بواسطة جافاسكريبت -->
+            </tbody>
+        </table>
+        <button onclick="loadData()">تحميل البيانات</button>
+    </div>
+
+    <script>
+        function loadData() {
+            const data = [
+                {name: "John Doe", email: "john.doe@example.com", amount: "$1000"},
+                {name: "Jane Smith", email: "jane.smith@example.com", amount: "$1500"},
+                {name: "Mike Johnson", email: "mike.johnson@example.com", amount: "$2000"},
+                {name: "Alice Brown", email: "alice.brown@example.com", amount: "$2500"},
+                {name: "Bob Davis", email: "bob.davis@example.com", amount: "$3000"}
+            ];
+
+            const tableBody = document.getElementById('data-table');
+            tableBody.innerHTML = '';
+
+            data.forEach(item => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${item.name}</td>
+                    <td>${item.email}</td>
+                    <td>${item.amount}</td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+    </script>
+</body>
+</html>
